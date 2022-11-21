@@ -1,5 +1,8 @@
 namespace: default
 
+dependsOn:
+  - name: homecentr-dependency
+
 targetCustomizations:
 - name: nginx-example
   # clusterName: local

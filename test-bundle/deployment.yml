@@ -19,3 +19,9 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
+        env:
+        - name: SPECIAL_LEVEL
+          valueFrom:
+            configMapKeyRef:     
+              name: game-config
+              key: SPECIAL_LEVEL
