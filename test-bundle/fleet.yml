@@ -1,0 +1,4 @@
+namespace: default
+
+targetCustomizations:
+- name: nginx-example
