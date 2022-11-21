@@ -2,4 +2,4 @@ namespace: default
 
 targetCustomizations:
 - name: nginx-example
-  clusterName: local
+  # clusterName: local
