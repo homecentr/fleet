@@ -1,0 +1,12 @@
+defaultNamespace: metallb-system
+
+dependsOn:
+  - homecentr-metallb
+
+targetCustomizations:
+  - name: lab
+    clusterSelector:
+      matchLabels:
+        env: lab
+    yaml:
+      overlays:

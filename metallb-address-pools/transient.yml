@@ -1,0 +1,9 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: transient
+  namespace: metallb-system
+spec:
+  addresses:
+    - "{{ k3s_services_external_ip_range }}"
+  autoAssign: true
