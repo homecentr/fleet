@@ -2,7 +2,7 @@ defaultNamespace: kube-system
 
 dependsOn:
   - name: homecentr-metallb
-  - name: homecentr-metallb-address-pools
+  - name: homecentr-metallb-configuration
 
 helm:
   chart: traefik
