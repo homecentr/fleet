@@ -8,6 +8,7 @@ helm:
   chart: traefik
   version: v20.5.1
   repo: https://traefik.github.io/charts
+  releaseName: ingress
   values:
     service:
       annotations:
