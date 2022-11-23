@@ -4,6 +4,5 @@ metadata:
   name: well-known
   namespace: metallb-system
 spec:
-  addresses:
-    - ""
+  addresses: # In overlay
   autoAssign: false

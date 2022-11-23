@@ -4,6 +4,5 @@ metadata:
   name: transient
   namespace: metallb-system
 spec:
-  addresses:
-    - "{{ k3s_services_external_ip_range }}"
+  addresses: # In overlay
   autoAssign: true
