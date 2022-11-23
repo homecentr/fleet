@@ -4,6 +4,7 @@ helm:
   chart: metallb
   version: 0.13.7
   repo: https://metallb.github.io/metallb
+  releaseName: metallb
   values:
     prometheus:
       scrapeAnnotations: true
