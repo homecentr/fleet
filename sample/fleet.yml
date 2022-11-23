@@ -1,0 +1,4 @@
+defaultNamespace: default
+
+dependsOn:
+  - name: homecentr-ingress
