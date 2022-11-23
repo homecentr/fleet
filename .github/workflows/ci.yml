@@ -1,0 +1,18 @@
+name: CI
+on:
+  push:
+    branches:
+      - disabled
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+
+      # - name: Lint Helm charts
+      #   run: TODO
+
+      # - name: Scan raw yaml files with kubescape
+      #   run: TODO
