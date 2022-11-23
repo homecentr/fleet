@@ -1,7 +1,7 @@
 defaultNamespace: metallb-system
 
 dependsOn:
-  - homecentr-metallb
+  - name: homecentr-metallb
 
 targetCustomizations:
   - name: lab
