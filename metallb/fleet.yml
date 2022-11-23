@@ -21,7 +21,7 @@ diff:
       name: bgppeers.metallb.io
       operations:
         - {"op": "remove", "path": "/spec/conversion/webhook/clientConfig/caBundle"}
-        - {"op": "remove", "path": "/status/acceptedNames/plural"}
+        - {"op": "remove", "path": "/status"}
 
 
 # targetCustomizations:
