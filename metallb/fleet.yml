@@ -23,27 +23,26 @@ diff:
         - {"op": "remove", "path": "/spec/conversion/webhook/clientConfig/caBundle"}
         - {"op": "remove", "path": "/status"}
 
-
-# targetCustomizations:
-#   - name: lab
-#     clusterSelector:
-#       matchLabels:
-#         env: lab
-#     helm:
-#       values:
-#         controller:
-#           resources:
-#             requests:
-#               cpu: 10m
-#               memory: 128Mi
-#             limits:
-#               cpu: 750m
-#               memory: 512Mi
-#         speaker:
-#           resources:
-#             requests:
-#               cpu: 10m
-#               memory: 128Mi
-#             limits:
-#               cpu: 750m
-#               memory: 512Mi
+targetCustomizations:
+  - name: lab
+    clusterSelector:
+      matchLabels:
+        env: lab
+    helm:
+      values:
+        controller:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
+            limits:
+              cpu: 750m
+              memory: 512Mi
+        speaker:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
+            limits:
+              cpu: 750m
+              memory: 512Mi
