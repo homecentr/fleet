@@ -1,8 +1,8 @@
 defaultNamespace: kube-system
 
 dependsOn:
-  - name: homecentr-metallb
-  - name: homecentr-metallb-configuration
+  - name: homecentr-infra-metallb
+  - name: homecentr-infra-metallb-configuration
 
 helm:
   chart: traefik

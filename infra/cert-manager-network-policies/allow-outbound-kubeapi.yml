@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cert-manager-allow-outbound-kubeapi
+  namespace: cert-manager
+spec:
+  egress:
+    # TODO: Limit to port 6443
+    
+    # Allow cert manager to call Kube API which is bound to external IPs of the nodes
+    # Rules defined in overlays (json patch would override values)
+  podSelector: {}
+  policyTypes:
+  - Egress

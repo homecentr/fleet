@@ -1,0 +1,9 @@
+apiVersion: v2
+name: cert-manager-network-policies
+description: Sample application
+version: 0.0.0
+appVersion: 0.0.0
+dependencies:
+  - name: mongodb
+    version: 9.2.4
+    repository: https://charts.bitnami.com/bitnami

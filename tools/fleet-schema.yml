@@ -1,0 +1,38 @@
+$id: https://example.com/person.schema.json
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Fleet
+type: object
+additionalProperties: false
+properties:
+  
+  defaultNamespace:
+    type: string
+
+  namespace:
+    type: string
+
+  paused:
+    type: boolean
+  
+  dependsOn:
+    type: array
+    item:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+
+  helm:
+    type: object
+    additionalProperties: true
+
+  kustomize:
+    type: object
+    additionalProperties: true
+
+  # targetCustomizations
+  # rolloutStrategy
+  # kustomize
+  # helm

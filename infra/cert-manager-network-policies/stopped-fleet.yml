@@ -1,7 +1,7 @@
-defaultNamespace: metallb-system
+defaultNamespace: cert-manager
 
 dependsOn:
-  - name: homecentr-metallb
+  - name: homecentr-infra-cert-manager
 
 targetCustomizations:
   - name: lab
