@@ -1,38 +1,334 @@
-$id: https://example.com/person.schema.json
+$id: https://fleet.rancher.io/fleet.schema.json
 $schema: https://json-schema.org/draft/2020-12/schema
 title: Fleet
 type: object
-additionalProperties: false
-properties:
-  
-  defaultNamespace:
-    type: string
+additionalProperties: true
+oneOf:
+  - title: helm
+    additionalProperties: false
+    properties:
+      defaultNamespace:
+        type: string
+      namespace:
+        type: string
+      paused:
+        type: boolean
+      dependsOn:
+        $ref: "#/definitions/DependsOn"
+      rolloutStrategy:
+        $ref: "#/definitions/RolloutStrategy"
+      diff:
+        $ref: "#/definitions/Diff"
+      helm:
+        $ref: "#/definitions/Helm"
+      targetCustomizations:
+        type: array
+        items:
+          $ref: "#/definitions/HelmTargetCustomizations"
+    required:
+      - helm
+      - defaultNamespace
 
-  namespace:
-    type: string
+  - title: kustomize
+    additionalProperties: false
+    properties:
+      defaultNamespace:
+        type: string
+      namespace:
+        type: string
+      paused:
+        type: boolean
+      dependsOn:
+        $ref: "#/definitions/DependsOn"
+      rolloutStrategy:
+        $ref: "#/definitions/RolloutStrategy"
+      diff:
+        $ref: "#/definitions/Diff"
+      kustomize:
+        $ref: "#/definitions/Kustomize"
+      targetCustomizations:
+        type: array
+        items:
+          $ref: "#/definitions/KustomizeTargetCustomizations"
+    required:
+      - kustomize
+      - defaultNamespace
 
-  paused:
-    type: boolean
-  
-  dependsOn:
+  - title: raw
+    additionalProperties: false
+    properties:
+      defaultNamespace:
+        type: string
+      namespace:
+        type: string
+      paused:
+        type: boolean
+      dependsOn:
+        $ref: "#/definitions/DependsOn"
+      rolloutStrategy:
+        $ref: "#/definitions/RolloutStrategy"
+      diff:
+        $ref: "#/definitions/Diff"
+      targetCustomizations:
+        type: array
+        items:
+          $ref: "#/definitions/RawYamlTargetCustomizations"
+    required:
+      - defaultNamespace
+
+definitions:
+  Percentage:
+    type: number
+    minimum: 0
+    maximum: 100
+
+  Kustomize:
+    type: object
+    additionalProperties: false
+    properties:
+      dir:
+        type: string
+
+  KustomizeTargetCustomizations:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      namespace:
+        type: string
+      defaultNamespace:
+        type: string
+      clusterName:
+        type: string
+      clusterGroup:
+        type: string
+      clusterSelector:
+        $ref: "#/definitions/ClusterSelector"
+      clusterGroupSelector:
+        $ref: "#/definitions/ClusterGroupSelector"
+      kustomize:
+        $ref: "#/definitions/Kustomize"
+
+  Helm:
+    type: object
+    additionalProperties: false
+    properties:
+      chart:
+        type: string
+      repo:
+        type: string
+      releaseName:
+        type: string
+      version:
+        type: string
+      values:
+        type: object
+        additionalProperties: true
+      valueFiles:
+        type: array
+        items:
+          type: string
+      valuesFrom:
+        type: array
+        items:
+          type: object
+          additionalProperties: true
+          oneOf:
+            - $ref: "#/definitions/HelmValueFromConfigMap"
+            - $ref: "#/definitions/HelmValueFromSecret"
+    required:
+      - chart
+      - repo # Required by our rules
+      - version # Required by our rules
+
+  HelmValueFromConfigMap:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      namespace:
+        type: string
+      key:
+        type: string
+    requests:
+      - name
+      - key
+
+  HelmValueFromSecret:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      namespace:
+        type: string
+      key:
+        type: string
+
+  HelmTargetCustomizations:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      namespace:
+        type: string
+      defaultNamespace:
+        type: string
+      clusterName:
+        type: string
+      clusterGroup:
+        type: string
+      clusterSelector:
+        $ref: "#/definitions/ClusterSelector"
+      clusterGroupSelector:
+        $ref: "#/definitions/ClusterGroupSelector"
+      helm: # These are override values and therefore no property can be required, hence the definition must be repeated without the required props
+        type: object
+        additionalProperties: false
+        properties:
+          chart:
+            type: string
+          repo:
+            type: string
+          releaseName:
+            type: string
+          version:
+            type: string
+          values:
+            type: object
+            additionalProperties: true
+          valueFiles:
+            type: array
+            items:
+              type: string
+          valuesFrom:
+            type: array
+            items:
+              type: object
+              additionalProperties: true
+              oneOf:
+                - $ref: "#/definitions/HelmValueFromConfigMap"
+                - $ref: "#/definitions/HelmValueFromSecret"
+
+  ClusterSelector:
+    type: object
+    additionalProperties: false
+    properties:
+      matchLabels:
+        type: object
+        additionalProperties: true
+
+  ClusterGroupSelector:
+    type: object
+    additionalProperties: false
+    properties:
+      matchLabels:
+        type: object
+        additionalProperties: true
+
+  RawYamlTargetCustomizations:
+    type: object
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      namespace:
+        type: string
+      defaultNamespace:
+        type: string
+      clusterName:
+        type: string
+      clusterGroup:
+        type: string
+      clusterSelector:
+        $ref: "#/definitions/ClusterSelector"
+      clusterGroupSelector:
+        $ref: "#/definitions/ClusterGroupSelector"
+      yaml:
+        type: object
+        additionalProperties: false
+        properties:
+          overlays:
+            type: array
+            items:
+              type: string
+        required:
+          - overlays
+
+  Diff:
+    type: object
+    required:
+      - comparePatches
+    properties:
+      comparePatches:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          properties:
+            apiVersion:
+              type: string
+            name:
+              type: string
+            kind:
+              type: string
+            namespace:
+              type: string
+            operations:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  op:
+                    type: string # TODO: Enum
+                  path:
+                    type: string
+                required:
+                  - op
+                  - path
+          required:
+            - name
+            - kind
+            - operations
+
+  RolloutStrategy:
+    type: object
+    additionalProperties: false
+    properties:
+      maxUnavailable:
+        $ref: "#/definitions/Percentage"
+      maxUnavailablePartitions:
+        $ref: "#/definitions/Percentage"
+      autoPartitionSize:
+        $ref: "#/definitions/Percentage"
+      partitions:
+        type: array
+        items:
+          type: object
+          additionalProperties: false
+          properties:
+            name:
+              type: string
+          maxUnavailable:
+            $ref: "#/definitions/Percentage"
+          clusterSelector:
+            $ref: "#/definitions/ClusterSelector"
+          clusterGroup:
+            type: string
+          clusterGroupSelector:
+            $ref: "#/definitions/ClusterGroupSelector"
+
+  DependsOn:
     type: array
-    item:
+    items:
       type: object
+      additionalProperties: false
       properties:
         name:
           type: string
       required:
         - name
-
-  helm:
-    type: object
-    additionalProperties: true
-
-  kustomize:
-    type: object
-    additionalProperties: true
-
-  # targetCustomizations
-  # rolloutStrategy
-  # kustomize
-  # helm

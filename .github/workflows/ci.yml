@@ -11,8 +11,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
 
-      # - name: Lint Helm charts
-      #   run: TODO
+      - name: Lint Helm charts
+        run: yarn lint
 
       # - name: Scan raw yaml files with kubescape
       #   run: TODO

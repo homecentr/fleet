@@ -7,10 +7,11 @@
   "license": "GPL",
   "private": true,
   "scripts": {
-    "lint": "",
-    "validate-deps": ""
+    "lint": "node ./tools/lint.js",
+    "update-deps": "node ./tools/update-deps.js"
   },
   "devDependencies": {
+    "cypress": "^11.2.0",
     "glob": "^8.0.3",
     "js-yaml": "^4.1.0",
     "jsonschema": "^1.4.1"

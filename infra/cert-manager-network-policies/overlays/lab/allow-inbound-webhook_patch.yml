@@ -1,9 +1,0 @@
-spec:
-  ingress:
-    - from: # Allow calls from Kube API
-        - ipBlock:
-            cidr: 10.1.8.21/32
-        - ipBlock:
-            cidr: 10.1.8.22/32
-        - ipBlock:
-            cidr: 10.1.8.23/32

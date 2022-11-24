@@ -7,10 +7,8 @@
     - yarn test command
 
 - CI workflow
-    - Validate fleet.yml (or fleet.yaml) files against a json schema (which I must create)
     - Validate all helm charts
-        - Run helm lint
-        - Verify all dependencies are installed
+        - Verify version of the dependencies ???
 
 - Consolidate bundles which contain external helm chart and custom resources
     - Create a helm chart with defined dependencies
