@@ -6,14 +6,14 @@
 - E2E tests for apps using Cypress - tests should have a configurable domain and ip range (via env var with a default)
     - yarn test command
 
+- CI workflow
+    - Validate all helm charts
+        - Verify version of the dependencies ???
+
 - Consolidate bundles which contain external helm chart and custom resources
     - Create a helm chart with defined dependencies
     - As per https://github.com/rancher/fleet/issues/250 the deps must be committed directly into the repo, therefore there is a risk
       of drift between Chart.yaml
-
-Tomorrow:
-- move metallb back to ansible - it was reliable and changing it through fleet is dangerous
-- ingress can stay, although CRDs are a PITA in general
 
 - Consider how to structure the repo - we need to put the network policies somewhere
     /infra
@@ -21,9 +21,8 @@ Tomorrow:
         /cert-manager-configuration (inline helm chart)
         /kubescape
         /local-volumes
-        - /metallb
-        - /metallb-configuration
-        - /ingress
+        /metallb
+        /metallb-configuration
         /network-policies
         /node-problem-detector
         /prometheus-operator

@@ -1,0 +1,8 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: transient
+  namespace: metallb-system
+spec:
+  addresses: # In overlay
+  autoAssign: true
