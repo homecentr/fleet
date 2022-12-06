@@ -1,7 +1,5 @@
 defaultNamespace: kube-system
 
-# TODO: Deploy one local-path-provisioner per "storage class"
-
 helm:
   chart: "" # local chart
   repo: ""

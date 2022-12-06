@@ -6,6 +6,6 @@ kind: StorageClass
 metadata:
   name: local-path-${{ $volume.name }}
 provisioner: rancher.io/local-path
-volumeBindingMode: {{ volume.bindingMode | default "WaitForFirstConsumer" }}
+volumeBindingMode: {{ $volume.bindingMode | default "WaitForFirstConsumer" }}
 reclaimPolicy: {{ $volume.reclaimPolicy }}
 {{ end }}
