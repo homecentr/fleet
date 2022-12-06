@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sample
+spec:
+  storageClassName: local-path-services2
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Mi
