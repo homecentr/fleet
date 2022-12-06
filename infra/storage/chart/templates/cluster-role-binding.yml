@@ -9,4 +9,3 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: local-path-provisioner
-    namespace: local-path-storage
