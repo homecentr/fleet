@@ -5,10 +5,5 @@ helm:
   repo: ""
   version: ""
   releaseName: local-storage
-  values:
-    imageVersion: v0.0.23
-    volumes:
-      - name: services
-        path: "/mnt/gfs/k3s-services"
-        bindingMode: Immediate
-        reclaimPolicy: delete
+  valuesFiles:
+  - values.yml

@@ -4,7 +4,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: local-path-provisioner-{{ $volume.name }}
+  name: local-path-provisioner-{{ $volume.name | required "volumes.<volume>.name is required" }}
 spec:
   replicas: 1
   selector:
@@ -18,7 +18,7 @@ spec:
       serviceAccountName: local-path-provisioner-service-account
       containers:
         - name: local-path-provisioner
-          image: rancher/local-path-provisioner:{{ $top.imageVersion }}
+          image: rancher/local-path-provisioner:{{ $top.Values.imageVersion | required ".Values.imageVersion is required" }}
           imagePullPolicy: IfNotPresent
           command:
             - local-path-provisioner
