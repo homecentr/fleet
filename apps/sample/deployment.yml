@@ -20,7 +20,7 @@ spec:
         volumeMounts:
           - mountPath: /dummy
             name: sample-volume
-  volumes:
-    - name: sample-volume
-      persistentVolumeClaim:
-        claimName: sample
+      volumes:
+        - name: sample-volume
+          persistentVolumeClaim:
+            claimName: sample
