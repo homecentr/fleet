@@ -1,0 +1,16 @@
+defaultNamespace: kube-system
+
+# TODO: Deploy one local-path-provisioner per "storage class"
+
+helm:
+  chart: "" # local chart
+  repo: ""
+  version: ""
+  releaseName: local-storage
+  values:
+    imageVersion: v0.0.23
+    volumes:
+      - name: services
+        path: "/mnt/gfs/k3s-services"
+        bindingMode: Immediate
+        reclaimPolicy: delete
