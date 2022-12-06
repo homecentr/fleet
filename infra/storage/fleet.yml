@@ -6,4 +6,4 @@ helm:
   version: ""
   releaseName: local-storage
   valuesFiles:
-  - values.yml
+    - values-all.yml
