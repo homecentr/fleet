@@ -10,7 +10,7 @@ data:
     {
       "sharedFileSystemPath": "{{ $volume.path | required "volumes.<volume>.path is required" }}"
     }
-  The directories are assumed to already exist
+  # The directories are assumed to already exist
   setup: |-
     #!/bin/sh
     set -eu
