@@ -26,8 +26,8 @@ spec:
             - start
             - --config
             - /etc/config/config.json
-            # - --configmap-name
-            # - local-path-config-{{ $volume.name }}
+            - --configmap-name
+            - local-path-config-{{ $volume.name }}
             # - --namespace
             # - kube-system
           volumeMounts:
