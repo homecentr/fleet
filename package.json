@@ -8,7 +8,9 @@
   "private": true,
   "scripts": {
     "lint": "node ./tools/lint.js",
-    "update-deps": "node ./tools/update-deps.js"
+    "update-deps": "node ./tools/update-deps.js",
+    "render:lab": "helm template . --values values-lab.yml",
+    "render:prod": "helm template . --values ./values-prod.yml"
   },
   "devDependencies": {
     "cypress": "^11.2.0",

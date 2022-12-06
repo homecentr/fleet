@@ -40,3 +40,7 @@
         /smtp-relay
         /snipe-it
         /unifi-controller
+
+# TODO
+- Render charts as a part of the CI, render to /dev/null to avoid leaking secrets
+- When dir contains Chart.yaml - check for values-lab.yml and values-prod.yml

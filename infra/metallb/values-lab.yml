@@ -1,0 +1,26 @@
+ipAddressPools:
+  - name: ad-hoc
+    autoAssign: true
+    ranges:
+      - "10.1.8.141-10.1.8.191"
+  - name: well-known
+    autoAssign: false
+    ranges:
+      - "10.1.8.128-10.1.8.140"
+metallb:
+  controller:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 128Mi
+      limits:
+        cpu: 1250m
+        memory: 512Mi
+  speaker:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 128Mi
+      limits:
+        cpu: 1250m
+        memory: 512Mi

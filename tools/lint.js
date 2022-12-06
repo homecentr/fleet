@@ -40,9 +40,9 @@ const validateHelmDependencies = (chartDir) => {
         }
 
         var segments = line.split('\t');
-        var status = segments[segments.length - 1];
+        var status = segments[segments.length - 1].trim();
 
-        if(status !== "ok") {
+        if(status != "ok") {
             depErrors.push(segments[0])
         }
     });

@@ -125,7 +125,7 @@ definitions:
       values:
         type: object
         additionalProperties: true
-      valueFiles:
+      valuesFiles:
         type: array
         items:
           type: string
@@ -200,7 +200,7 @@ definitions:
           values:
             type: object
             additionalProperties: true
-          valueFiles:
+          valuesFiles:
             type: array
             items:
               type: string
