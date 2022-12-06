@@ -1,9 +1,9 @@
 defaultNamespace: kube-system
 
 helm:
-  chart: "" # local chart
+  chart: "./chart" # local chart
   repo: ""
   version: ""
   releaseName: local-storage
   valuesFiles:
-    - values-all.yml
+    - values.yml
