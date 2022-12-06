@@ -1,0 +1,31 @@
+defaultNamespace: kube-system
+
+dependsOn:
+  - name: homecentr-metallb
+
+helm:
+  chart: traefik
+  version: v20.5.1
+  repo: https://traefik.github.io/charts
+  releaseName: ingress
+  values:
+    service:
+      annotations:
+        metallb.universe.tf/allow-shared-ip: "ingress"
+
+targetCustomizations:
+  - name: lab
+    clusterSelector:
+      matchLabels:
+        env: lab
+    helm:
+      valuesFiles:
+      - values-lab.yml
+
+  - name: prod
+    clusterSelector:
+      matchLabels:
+        env: prod
+    helm:
+      valuesFiles:
+      - values-prod.yml
