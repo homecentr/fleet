@@ -10,15 +10,17 @@ data:
     {
       "sharedFileSystemPath": "{{ $volume.path | required "volumes.<volume>.path is required" }}"
     }
-  # The directories are assumed to already exist
-  # setup: |-
-  #   #!/bin/sh
-  #   set -eu
-  #   mkdir -m 0777 -p "$VOL_DIR"
-  # teardown: |-
-  #   #!/bin/sh
-  #   set -eu
-  #   rm -rf "$VOL_DIR"
+  The directories are assumed to already exist
+  setup: |-
+    #!/bin/sh
+    set -eu
+    echo "Hello"
+  # mkdir -m 0777 -p "$VOL_DIR"
+  teardown: |-
+    #!/bin/sh
+    set -eu
+    echo "Exit"
+  # rm -rf "$VOL_DIR"
   helperPod.yaml: |-
     apiVersion: v1
     kind: Pod
