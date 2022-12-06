@@ -1,9 +1,9 @@
 defaultNamespace: metallb-system
 
 helm:
-  chart: metallb
-  version: 0.13.7
-  repo: https://metallb.github.io/metallb
+  chart: "" # local chart
+  repo: ""
+  version: ""
   releaseName: metallb
   values:
     prometheus:
