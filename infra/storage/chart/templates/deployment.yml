@@ -4,16 +4,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: local-path-provisioner-{{ $volume.name | required "volumes.<volume>.name is required" }}
+  name: local-path-provisioner  #-{{ $volume.name | required "volumes.<volume>.name is required" }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: local-path-provisioner-{{ $volume.name }}
+      app: local-path-provisioner #-{{ $volume.name }}
   template:
     metadata:
       labels:
-        app: local-path-provisioner-{{ $volume.name }}
+        app: local-path-provisioner #-{{ $volume.name }}
     spec:
       serviceAccountName: local-path-provisioner-service-account
       containers:
@@ -26,10 +26,10 @@ spec:
             - start
             - --config
             - /etc/config/config.json
-            - --configmap-name
-            - local-path-config-{{ $volume.name }}
-            - --namespace
-            - kube-system
+            # - --configmap-name
+            # - local-path-config-{{ $volume.name }}
+            # - --namespace
+            # - kube-system
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config/
@@ -41,5 +41,5 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: local-path-config-{{ $volume.name }}
+            name: local-path-config #-{{ $volume.name }}
 {{ end }}
