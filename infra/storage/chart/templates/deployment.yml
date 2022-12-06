@@ -4,18 +4,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: local-path-provisioner  #-{{ $volume.name | required "volumes.<volume>.name is required" }}
+  name: local-path-provisioner-{{ $volume.name | required "volumes.<volume>.name is required" }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: local-path-provisioner #-{{ $volume.name }}
+      app: local-path-provisioner-{{ $volume.name }}
   template:
     metadata:
       labels:
-        app: local-path-provisioner #-{{ $volume.name }}
+        app: local-path-provisioner-{{ $volume.name }}
     spec:
-      serviceAccountName: local-path-provisioner-service-account
+      serviceAccountName: local-path-provisioner
       containers:
         - name: local-path-provisioner
           image: rancher/local-path-provisioner:{{ $top.Values.imageVersion | required ".Values.imageVersion is required" }}
@@ -41,5 +41,5 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: local-path-config #-{{ $volume.name }}
+            name: local-path-config-{{ $volume.name }}
 {{ end }}
