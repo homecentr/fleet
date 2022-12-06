@@ -1,5 +1,5 @@
 {{- $top := . -}}
-{{- range $volume := .Values.volumes -}}
+{{- range $volume := .Values.localVolumes -}}
 ---
 apiVersion: apps/v1
 kind: Deployment

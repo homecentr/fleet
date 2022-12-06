@@ -1,5 +1,5 @@
 {{- $top := . -}}
-{{- range $volume := .Values.volumes -}}
+{{- range $volume := .Values.localVolumes -}}
 ---
 kind: ConfigMap
 apiVersion: v1
