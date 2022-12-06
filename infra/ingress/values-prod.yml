@@ -1,3 +1,4 @@
 service:
   annotations:
+    metallb.universe.tf/allow-shared-ip: "ingress"
     metallb.universe.tf/loadBalancerIPs: 10.1.2.130

@@ -8,10 +8,6 @@ helm:
   version: v20.5.1
   repo: https://traefik.github.io/charts
   releaseName: ingress
-  values:
-    service:
-      annotations:
-        metallb.universe.tf/allow-shared-ip: "ingress"
 
 targetCustomizations:
   - name: lab
