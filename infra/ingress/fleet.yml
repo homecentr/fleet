@@ -3,7 +3,7 @@ defaultNamespace: kube-system
 dependsOn:
   - name: homecentr-infra-metallb
   - name: homecentr-infra-priority-classes
-  
+
 helm:
   chart: "./chart" # local chart
   repo: ""
