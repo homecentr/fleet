@@ -2,7 +2,8 @@ defaultNamespace: kube-system
 
 dependsOn:
   - name: homecentr-infra-metallb
-
+  - name: homecentr-infra-priority-classes
+  
 helm:
   chart: traefik
   version: v20.5.1

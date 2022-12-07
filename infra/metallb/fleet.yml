@@ -1,5 +1,9 @@
 defaultNamespace: metallb-system
 
+dependsOn:
+  - name: homecentr-infra-namespaces
+  - name: homecentr-infra-priority-classes
+
 helm:
   chart: "" # local chart
   repo: ""
