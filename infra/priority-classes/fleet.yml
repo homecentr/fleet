@@ -1,1 +1,9 @@
 defaultNamespace: kube-system
+
+helm:
+  chart: "" # local chart
+  repo: ""
+  version: ""
+  releaseName: priority-classes
+  valuesFiles:
+  - values.yml
