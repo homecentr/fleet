@@ -5,10 +5,10 @@ dependsOn:
   - name: homecentr-infra-priority-classes
   
 helm:
-  chart: traefik
-  version: v20.5.1
-  repo: https://traefik.github.io/charts
-  releaseName: ingress
+  chart: "./chart" # local chart
+  repo: ""
+  version: ""
+  releaseName: metallb
 
 targetCustomizations:
   - name: lab

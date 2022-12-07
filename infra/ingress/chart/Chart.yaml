@@ -1,0 +1,10 @@
+apiVersion: v2
+name: ingress
+description: ingress
+version: 0.0.0
+appVersion: 0.0.0
+
+dependencies:
+  - name: traefik
+    repository: https://traefik.github.io/charts
+    version: v20.5.1
