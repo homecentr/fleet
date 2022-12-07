@@ -1,0 +1,28 @@
+ipAddressPools:
+  - name: ad-hoc
+    autoAssign: true
+    ranges:
+      - "10.1.2.141-10.1.2.191"
+  - name: well-known
+    autoAssign: false
+    ranges:
+      - "10.1.2.128-10.1.2.140"
+metallb:
+  controller:
+    priorityClassName: system-cluster-critical
+    resources:
+      requests:
+        cpu: 10m
+        memory: 128Mi
+      limits:
+        cpu: 1250m
+        memory: 512Mi
+  speaker:
+    priorityClassName: system-cluster-critical
+    resources:
+      requests:
+        cpu: 10m
+        memory: 128Mi
+      limits:
+        cpu: 1250m
+        memory: 512Mi

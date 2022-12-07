@@ -1,3 +1,4 @@
+priorityClassName: system-cluster-critical
 service:
   annotations:
     metallb.universe.tf/allow-shared-ip: "ingress"
