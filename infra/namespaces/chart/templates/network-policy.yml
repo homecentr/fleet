@@ -1,0 +1,18 @@
+{{- $top := . -}}
+{{- range $namespace := .Values.namespaces -}}
+{{- if eq $namespace.defaultNetworkPolicy true -}}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default
+  namespace: {{ $namespace.name }}
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+  egress:
+{{ end }}
+{{- end -}}

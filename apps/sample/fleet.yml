@@ -1,4 +1,4 @@
 defaultNamespace: default
 
 dependsOn:
-  - name: homecentr-infra-ingress
+  - name: homecentr-infra-meta

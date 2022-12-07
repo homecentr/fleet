@@ -1,0 +1,8 @@
+defaultNamespace: kube-system
+
+dependsOn:
+- homecentr-infra-namespaces
+- homecentr-infra-priority-classes
+- homecentr-infra-metallb
+- homecentr-infra-ingress
+- homecentr-infra-storage
