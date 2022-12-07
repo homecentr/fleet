@@ -9,6 +9,7 @@ ipAddressPools:
       - "10.1.8.128-10.1.8.140"
 metallb:
   controller:
+    priorityClassName: system-cluster-critical
     resources:
       requests:
         cpu: 10m
@@ -17,6 +18,7 @@ metallb:
         cpu: 1250m
         memory: 512Mi
   speaker:
+    priorityClassName: system-cluster-critical
     resources:
       requests:
         cpu: 10m
