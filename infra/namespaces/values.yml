@@ -5,6 +5,8 @@ namespaces:
   defaultNetworkPolicy: true
 - name: monitoring
   defaultNetworkPolicy: true
+- name: kube-public
+  defaultNetworkPolicy: true
 - name: metallb-system
   defaultNetworkPolicy: false
   labels:
