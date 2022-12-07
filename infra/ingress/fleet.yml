@@ -9,7 +9,7 @@ helm:
   repo: ""
   version: ""
   releaseName: metallb
-
+  
 targetCustomizations:
   - name: lab
     clusterSelector:
