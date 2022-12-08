@@ -1,0 +1,28 @@
+defaultNamespace: cert-manager
+
+dependsOn:
+  - name: homecentr-infra-metallb-configuration
+  - name: homecentr-infra-namespaces
+
+helm:
+  chart: "./chart" # local chart
+  repo: ""
+  version: ""
+  releaseName: cert-manager
+  
+targetCustomizations:
+  - name: lab
+    clusterSelector:
+      matchLabels:
+        env: lab
+    helm:
+      valuesFiles:
+      - values-lab.yml
+
+  - name: prod
+    clusterSelector:
+      matchLabels:
+        env: prod
+    helm:
+      valuesFiles:
+      - values-prod.yml

@@ -7,3 +7,4 @@ dependsOn:
   - name: homecentr-infra-metallb-configuration
   - name: homecentr-infra-ingress
   - name: homecentr-infra-storage
+  - name: homecentr-infra-cert-manager
