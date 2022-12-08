@@ -1,7 +1,7 @@
 cert-manager:
   installCRDs: true
   webhook:
-    securePort: "{{ certmanager_webhook_secure_port }}"
+    securePort: 10222
     podAnnotations:
       container.apparmor.security.beta.kubernetes.io/cert-manager: runtime/default
       seccomp.security.alpha.kubernetes.io/pod: runtime/default
