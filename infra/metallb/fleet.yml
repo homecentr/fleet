@@ -5,9 +5,9 @@ dependsOn:
   - name: homecentr-infra-priority-classes
 
 helm:
-  chart: "" # local chart
-  repo: ""
-  version: ""
+  chart: metallb
+  repo: https://metallb.github.io/metallb
+  version: 0.13.7
   releaseName: metallb
   values:
     prometheus:
