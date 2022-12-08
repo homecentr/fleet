@@ -2,9 +2,9 @@ cert-manager:
   installCRDs: true
   webhook:
     securePort: 10222
-    podAnnotations:
-      container.apparmor.security.beta.kubernetes.io/cert-manager: runtime/default
-      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    # podAnnotations:
+    #   container.apparmor.security.beta.kubernetes.io/cert-manager: runtime/default
+    #   seccomp.security.alpha.kubernetes.io/pod: runtime/default
     resources:
       limits:
         cpu: 500m
@@ -22,9 +22,9 @@ cert-manager:
           drop:
           - all
   cainjector:
-    podAnnotations:
-      container.apparmor.security.beta.kubernetes.io/cert-manager: runtime/default
-      seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    # podAnnotations:
+    #   container.apparmor.security.beta.kubernetes.io/cert-manager: runtime/default
+    #   seccomp.security.alpha.kubernetes.io/pod: runtime/default
     resources:
       limits:
         cpu: 500m
@@ -41,9 +41,9 @@ cert-manager:
       capabilities:
           drop:
           - all
-  podAnnotations:
-    container.apparmor.security.beta.kubernetes.io/cert-manager: runtime/default
-    seccomp.security.alpha.kubernetes.io/pod: runtime/default
+  # podAnnotations:
+  #   container.apparmor.security.beta.kubernetes.io/cert-manager: runtime/default
+  #   seccomp.security.alpha.kubernetes.io/pod: runtime/default
   resources:
     limits:
       cpu: 500m
