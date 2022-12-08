@@ -4,5 +4,6 @@ dependsOn:
   - name: homecentr-infra-namespaces
   - name: homecentr-infra-priority-classes
   - name: homecentr-infra-metallb
+  - name: homecentr-infra-metallb-configuration
   - name: homecentr-infra-ingress
   - name: homecentr-infra-storage

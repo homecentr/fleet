@@ -1,15 +1,17 @@
-defaultNamespace: kube-system
+defaultNamespace: metallb-system
 
 dependsOn:
-  - name: homecentr-infra-metallb-configuration
-  - name: homecentr-infra-priority-classes
+  - name: homecentr-infra-metallb
+
+# The custom resources must be in a separate bundle because using helm dependency 
+# creates a race condition when the resources are created before kubernetes api accepts them
 
 helm:
   chart: "./chart" # local chart
   repo: ""
   version: ""
-  releaseName: ingress
-  
+  releaseName: metallb-configuration
+
 targetCustomizations:
   - name: lab
     clusterSelector:
