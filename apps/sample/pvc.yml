@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: sample
 spec:
-  storageClassName: local-path-services2
+  storageClassName: local-path-services
   accessModes:
     - ReadWriteMany
   resources:
