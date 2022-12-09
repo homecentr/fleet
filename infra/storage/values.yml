@@ -1,6 +1,0 @@
-imageVersion: v0.0.23
-localVolumes:
-  - name: services2
-    path: "/mnt/gfs/k3s-services"
-    bindingMode: Immediate
-    reclaimPolicy: Delete

@@ -1,9 +1,0 @@
-ipAddressPools:
-  - name: ad-hoc
-    autoAssign: true
-    ranges:
-      - "10.1.8.141-10.1.8.191"
-  - name: well-known
-    autoAssign: false
-    ranges:
-      - "10.1.8.128-10.1.8.140"

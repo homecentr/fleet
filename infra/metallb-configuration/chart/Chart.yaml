@@ -1,5 +1,0 @@
-apiVersion: v2
-name: metallb-configuration
-description: Metal LB Configuration
-version: 0.0.0
-appVersion: 0.0.0
