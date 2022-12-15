@@ -1,0 +1,5 @@
+defaultNamespace: default
+name: failing-sample
+
+labels:
+  some: value

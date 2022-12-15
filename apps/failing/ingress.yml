@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingressssss
+metadata:aaaaaa
+: sample-http2
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+  - host: sample.lab.homecentr.one
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sample-nginx
+            port:
+              number: 80

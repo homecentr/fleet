@@ -4,4 +4,4 @@ name: custom-sample
 dependsOn:
   - selector:
       matchLabels:
-        namespace: system
+        some: value
