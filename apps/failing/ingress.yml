@@ -1,5 +1,5 @@
 apiVersion: networking.k8s.io/v1
-kind: IngressAAAAAA
+kind: Ingress
 metadata:
   name: sample-http2
   annotations:
