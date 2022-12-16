@@ -1,0 +1,18 @@
+prometheus:
+  scrapeAnnotations: true
+controller:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 128Mi
+    limits:
+      cpu: 1250m
+      memory: 512Mi
+speaker:
+  resources:
+    requests:
+      cpu: 10m
+      memory: 128Mi
+    limits:
+      cpu: 1250m
+      memory: 512Mi

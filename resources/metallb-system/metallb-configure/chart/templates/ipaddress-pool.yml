@@ -1,0 +1,14 @@
+{{- $top := . -}}
+{{- range $pool := .Values.ipAddressPools -}}
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: cluster-{{ $pool.name }}
+spec:
+  addresses:
+    {{- range $addressRange := $pool.ranges }}
+    - {{ $addressRange | quote }}
+    {{- end }}
+  autoAssign: {{ $pool.autoAssign | default "true" }}
+{{ end }}

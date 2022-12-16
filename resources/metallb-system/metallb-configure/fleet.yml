@@ -1,0 +1,30 @@
+defaultNamespace: metallb-system
+
+name: metallb-configure
+
+labels:
+  namespace: metallb-system
+
+dependsOn:
+  - name: metallb-install
+
+helm:
+  chart: "./chart"
+  releaseName: metallb-configuration
+
+targetCustomizations:
+  - name: lab
+    clusterSelector:
+      matchLabels:
+        env: lab
+    helm:
+      valuesFiles:
+      - values-lab.yml
+
+  - name: prod
+    clusterSelector:
+      matchLabels:
+        env: prod
+    helm:
+      valuesFiles:
+      - values-prod.yml

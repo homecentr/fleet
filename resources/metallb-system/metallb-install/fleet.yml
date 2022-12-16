@@ -1,0 +1,47 @@
+defaultNamespace: metallb-system
+
+name: metallb-install
+
+labels:
+  namespace: metallb-system
+
+dependsOn:
+  - name: metallb-system-namespace
+
+helm:
+  chart: metallb
+  repo: https://metallb.github.io/metallb
+  version: 0.13.7
+  releaseName: metallb
+
+diff:
+  comparePatches:
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: addresspools.metallb.io
+      operations:
+        - {"op": "remove", "path": "/spec/conversion/webhook/clientConfig/caBundle"}
+        - {"op": "remove", "path": "/status"}
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: bgppeers.metallb.io
+      operations:
+        - {"op": "remove", "path": "/spec/conversion/webhook/clientConfig/caBundle"}
+        - {"op": "remove", "path": "/status"}
+
+targetCustomizations:
+  - name: lab
+    clusterSelector:
+      matchLabels:
+        env: lab
+    helm:
+      valuesFiles:
+      - values-lab.yml
+
+  - name: prod
+    clusterSelector:
+      matchLabels:
+        env: prod
+    helm:
+      valuesFiles:
+      - values-prod.yml
