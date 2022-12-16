@@ -8,20 +8,5 @@ labels:
 helm:
   chart: "./chart"
   releaseName: local-storage-provisioner
-
-targetCustomizations:
-  - name: lab
-    clusterSelector:
-      matchLabels:
-        env: lab
-    helm:
-      valuesFiles:
-      - values-lab.yml
-
-  - name: prod
-    clusterSelector:
-      matchLabels:
-        env: prod
-    helm:
-      valuesFiles:
-      - values-prod.yml
+  valuesFiles:
+    - values.yml
