@@ -24,4 +24,4 @@ spec:
         - {{ .Release.Namespace }}
         - dummy=true
       restartPolicy: Never
-      serviceAccountName: fleet-local
+      serviceAccountName: fleet-agent
