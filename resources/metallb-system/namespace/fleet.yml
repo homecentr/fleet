@@ -1,4 +1,10 @@
+defaultNamespace: metallb-system
+
 name: metallb-system-namespace
 
 labels:
   namespace: metallb-system
+
+helm:
+  chart: ./chart
+  releaseName: metallb-system-namespace
