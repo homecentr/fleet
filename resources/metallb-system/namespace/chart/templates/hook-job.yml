@@ -1,15 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Release.Name | quote }}
-  namespace: kube-system
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
   labels:
-    release: {{ .Release.Name | quote }}
-    heritage: {{ .Release.Service | quote }}
     helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    dummy: "AAAA"
   annotations:
-    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook: pre-install
     helm.sh/hook-delete-policy: hook-succeeded
 spec:
   template:
@@ -24,4 +21,4 @@ spec:
         - {{ .Release.Namespace }}
         - dummy=true
       restartPolicy: Never
-      serviceAccountName: namespace-controller
+      serviceAccountName: "{{ .Release.Name }}-hook"
