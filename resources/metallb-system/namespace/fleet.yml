@@ -4,7 +4,6 @@ name: metallb-system-namespace
 
 labels:
   namespace: metallb-system
-  dummy: change
 
 helm:
   chart: ./chart
