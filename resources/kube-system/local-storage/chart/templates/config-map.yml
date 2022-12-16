@@ -1,0 +1,31 @@
+{{- $top := . -}}
+{{- range $volume := .Values.localVolumes -}}
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: local-path-provisioner-{{ $volume.name }}
+data:
+  config.json: |-
+    {
+      "sharedFileSystemPath": "{{ $volume.path | required "volumes.<volume>.path is required" }}"
+    }
+  setup: |-
+    #!/bin/sh
+    set -eu
+    mkdir -m 0777 -p "$VOL_DIR"
+  teardown: |-
+    #!/bin/sh
+    set -eu
+    rm -rf "$VOL_DIR"
+  helperPod.yaml: |-
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: helper-pod
+    spec:
+      containers:
+      - name: helper-pod
+        image: busybox
+        imagePullPolicy: IfNotPresent
+{{ end }}

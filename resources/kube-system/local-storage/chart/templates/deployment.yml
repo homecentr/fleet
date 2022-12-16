@@ -1,0 +1,41 @@
+{{- $top := . -}}
+{{- range $volume := .Values.localVolumes -}}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: local-path-provisioner-{{ $volume.name | required "volumes.<volume>.name is required" }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: local-path-provisioner-{{ $volume.name }}
+  template:
+    metadata:
+      labels:
+        app: local-path-provisioner-{{ $volume.name }}
+    spec:
+      serviceAccountName: local-path-provisioner
+      containers:
+        - name: local-path-provisioner
+          image: rancher/local-path-provisioner:{{ $top.Values.imageVersion | required ".Values.imageVersion is required" }}
+          imagePullPolicy: IfNotPresent
+          command:
+            - local-path-provisioner
+            - --debug
+            - start
+            - --config
+            - /etc/config/config.json
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config/
+          env:
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+      volumes:
+        - name: config-volume
+          configMap:
+            name: local-path-provisioner-${{ $volume.name }}
+{{ end }}
