@@ -1,0 +1,5 @@
+defaultNamespace: kube-system
+name: kube-system-namespace
+
+labels:
+  namespace: kube-system

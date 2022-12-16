@@ -1,7 +1,2 @@
 defaultNamespace: default
-name: custom-sample
-
-dependsOn:
-  - selector:
-      matchLabels:
-        some: value
+name: sample
