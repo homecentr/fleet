@@ -5,15 +5,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: local-path-provisioner-{{ $volume.name | required "volumes.<volume>.name is required" }}
+  labels:
+    app.kubernetes.io/name: local-path-provisioner
+    app.kubernetes.io/instance: local-path-provisioner-{{ $volume.name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: local-path-provisioner-{{ $volume.name }}
+      app.kubernetes.io/name: local-path-provisioner
+      app.kubernetes.io/instance: local-path-provisioner-{{ $volume.name }}
   template:
     metadata:
       labels:
-        app: local-path-provisioner-{{ $volume.name }}
+        app.kubernetes.io/name: local-path-provisioner
+        app.kubernetes.io/instance: local-path-provisioner-{{ $volume.name }}
     spec:
       serviceAccountName: local-path-provisioner
       containers:

@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: local-path-provisioner
+  labels:
+    app.kubernetes.io/name: local-path-provisioner
 spec:
   podSelector:
     matchLabels:
