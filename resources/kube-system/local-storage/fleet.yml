@@ -6,7 +6,7 @@ labels:
   namespace: kube-system
 
 helm:
-  force: true # to allow replacing immutable resources (e.g. deployment labels)
+  force: true # to allow replacing immutable resources (e.g. deployment labels), this service does not need 100% uptime, it's required only when a new PV/PVC is created
   chart: "./chart"
   releaseName: local-storage-provisioner
   valuesFiles:

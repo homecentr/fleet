@@ -31,6 +31,10 @@ spec:
             - start
             - --config
             - /etc/config/config.json
+            - --configmap-name
+            - local-path-config-{{ $volume.name }}
+            - --service-account-name
+            - local-path-provisioner
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config/
