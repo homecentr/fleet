@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: local-path-provisioner
-  namespace: kube-system
 spec:
   podSelector:
     matchLabels:
@@ -17,7 +16,7 @@ spec:
   ingress:
     - from: # Allow webhook calls from Kube API
         - ipBlock:
-            cidr: 172.17.0.1/32/32
+            cidr: 172.17.0.1/32
   policyTypes:
   - Ingress
   - Egress
