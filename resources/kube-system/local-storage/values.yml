@@ -3,4 +3,4 @@ localVolumes:
   - name: services
     path: "/mnt/gfs/k3s-services"
     bindingMode: Immediate
-    reclaimPolicy: delete
+    reclaimPolicy: Delete
