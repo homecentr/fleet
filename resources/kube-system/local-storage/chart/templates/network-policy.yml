@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: local-path-provisioner
+  namespace: kube-system
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: local-path-provisioner
+  egress:
+    - to: # Kubernetes API
+        - ipBlock:
+            cidr: 172.17.0.1/32
+      ports:
+        - protocol: TCP
+          port: 443
+  ingress:
+    - from: # Allow webhook calls from Kube API
+        - ipBlock:
+            cidr: 172.17.0.1/32/32
+  policyTypes:
+  - Ingress
+  - Egress
