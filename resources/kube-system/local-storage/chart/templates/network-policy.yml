@@ -18,7 +18,7 @@ spec:
         - protocol: TCP
           port: {{ (lookup "v1" "Endpoints" "default" "kubernetes").ports[0].port) }}
   ingress:
-    - from: # Allow webhook calls from Kube API 
+    - from: # Allow webhook calls from Kube API
 {{- range $nodeIp := (lookup "v1" "Endpoints" "default" "kubernetes").subsets.addresses) -}}
         - ipBlock:
             cidr: {{ $nodeIp }}/32
