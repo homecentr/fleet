@@ -21,5 +21,6 @@ spec:
         - ns
         - {{ .Release.Namespace }}
         - dummy=true
+        - --overwrite
       restartPolicy: Never
       serviceAccountName: "{{ .Release.Name }}-hook"
