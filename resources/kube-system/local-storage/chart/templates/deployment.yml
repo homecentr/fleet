@@ -8,6 +8,7 @@ metadata:
   labels:
     app.kubernetes.io/name: local-path-provisioner
     app.kubernetes.io/instance: local-path-provisioner-{{ $volume.name }}
+    checksum/config: {{ include (print $.Template.BasePath "/config-map.yaml") . | sha256sum }}
 spec:
   replicas: 1
   selector:
